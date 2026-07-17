@@ -3,11 +3,8 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from aiogram.client.session.aiohttp import AiohttpSession
 
 from config import TOKEN
-
-session = AiohttpSession(proxy="http://127.0.0.1:10809")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
