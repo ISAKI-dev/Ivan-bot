@@ -12,15 +12,19 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def cmd_start(massage: Message):
-    await massage.answer("Привет!")
+    await massage.answer("Привет!"
+                         "Если хочешь знать что этот бот умеет напиши /help")
 
-dp.message(Command("help"))
+dp.message(Command("id"))
 async def id(massange:Message):
     await massange.reply(f"Привет. \nТвой ID: {massange.from_user.id}\nИмя: {massange.from_user.first_name}")
 
 @dp.message(Command("help"))
 async def get_help(massange:Message):
-    await massange.answer("Привет этот бот пока ничего не умеет((")
+    await massange.answer("Привет этот бот умеет:"
+                          "Найти твой id - /id"
+                          "Узнать как у Ивана дела - \"Как у ивана дела?\""
+                          "Отправить свое фото боту")
 
 @dp.message(F.text == "Как у Ивана дела?")
 async def how_are_ivan(massange: Message):
@@ -44,7 +48,6 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         print("Exit")
-        asyncio.run(main())
     except KeyboardInterrupt:
         print("Exit")
 
