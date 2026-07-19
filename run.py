@@ -21,16 +21,16 @@ async def id(massange:Message):
 
 @dp.message(Command("help"))
 async def get_help(massange:Message):
-    await massange.answer("Привет этот бот умеет:"
-                          "Найти твой id - /id"
-                          "Узнать как у Ивана дела - \"Как у ивана дела?\""
+    await massange.answer("Привет этот бот умеет:\n"
+                          "Найти твой id - /id\n"
+                          "Узнать как у Ивана дела - \"Как у ивана дела?\"\n"
                           "Отправить свое фото боту")
 
 @dp.message(F.text == "Как у Ивана дела?")
 async def how_are_ivan(massange: Message):
     await massange.answer("У Ивана все прекрасно")
 
-@dp.message(Command("send_photo"))
+@dp.message(F.photo)
 async def send_photo(massange:Message):
     await massange.answer(f"ID фото: {massange.photo[-1].file_id}")
 
