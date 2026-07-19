@@ -16,27 +16,27 @@ async def cmd_start(massage: Message):
                          "Если хочешь знать что этот бот умеет напиши /help")
 
 @dp.message(Command("id"))
-async def id(massange:Message):
+async def id(massage:Message):
     await massange.reply(f"Привет. \nТвой ID: {massange.from_user.id}\nИмя: {massange.from_user.first_name}")
 
 @dp.message(Command("help"))
-async def get_help(massange:Message):
-    await massange.answer("Привет этот бот умеет:\n"
+async def get_help(massage:Message):
+    await massage.answer("Привет этот бот умеет:\n"
                           "Найти твой id - /id\n"
                           "Узнать как у Ивана дела - \"Как у ивана дела?\"\n"
                           "Отправить свое фото боту")
 
 @dp.message(F.text == "Как у Ивана дела?")
-async def how_are_ivan(massange: Message):
-    await massange.answer("У Ивана все прекрасно")
+async def how_are_ivan(massage: Message):
+    await massage.answer("У Ивана все прекрасно")
 
 @dp.message(F.photo)
-async def send_photo(massange:Message):
-    await massange.answer(f"ID фото: {massange.photo[-1].file_id}")
+async def send_photo(massage:Message):
+    await massage.answer(f"ID фото: {massange.photo[-1].file_id}")
 
 @dp.message(Command("get_photo"))
-async def get_photo(massange:Message):
-    await massange.reply_photo(photo = "AgACAgIAAxkBAAMPalyYc_q06y3jwtuyaq36x3uZ3_gAAuMVaxtU4OFK6yPgBa_J6FoBAAMCAAN4AAM9BA"
+async def get_photo(massage:Message):
+    await massage.reply_photo(photo = "AgACAgIAAxkBAAMPalyYc_q06y3jwtuyaq36x3uZ3_gAAuMVaxtU4OFK6yPgBa_J6FoBAAMCAAN4AAM9BA"
                           , caption="Это ваше фото")
 
 async def main():
