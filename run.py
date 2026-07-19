@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from aiogram import Bot, Dispatcher,F
+from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 
@@ -15,7 +15,7 @@ async def cmd_start(massage: Message):
     await massage.answer("Привет!"
                          "Если хочешь знать что этот бот умеет напиши /help")
 
-dp.message(Command("id"))
+@dp.message(Command("id"))
 async def id(massange:Message):
     await massange.reply(f"Привет. \nТвой ID: {massange.from_user.id}\nИмя: {massange.from_user.first_name}")
 
@@ -30,13 +30,13 @@ async def get_help(massange:Message):
 async def how_are_ivan(massange: Message):
     await massange.answer("У Ивана все прекрасно")
 
-@dp.message(Command("get_photo"))
-async def get_photo(massange:Message):
+@dp.message(Command("send_photo"))
+async def send_photo(massange:Message):
     await massange.answer(f"ID фото: {massange.photo[-1].file_id}")
 
-@dp.message(F.photo)
+@dp.message(Command("get_photo"))
 async def get_photo(massange:Message):
-    await massange.answer(photo = "AgACAgIAAxkBAAMPalyYc_q06y3jwtuyaq36x3uZ3_gAAuMVaxtU4OFK6yPgBa_J6FoBAAMCAAN4AAM9BA"
+    await massange.reply_photo(photo = "AgACAgIAAxkBAAMPalyYc_q06y3jwtuyaq36x3uZ3_gAAuMVaxtU4OFK6yPgBa_J6FoBAAMCAAN4AAM9BA"
                           , caption="Это ваше фото")
 
 async def main():
@@ -48,6 +48,3 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         print("Exit")
-    except KeyboardInterrupt:
-        print("Exit")
-
